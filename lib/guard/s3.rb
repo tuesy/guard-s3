@@ -23,8 +23,6 @@ module ::Guard
       @s3_permissions = :public_read
       @debug          = true
       @pwd            = Dir.pwd
-      
-      log "Initialized with watchers = #{watchers.inspect}"
     end
     
     def start
