@@ -16,7 +16,7 @@ module ::Guard
     def initialize(watchers = [], options = {})
       super
       @s3_connection = Base.establish_connection!(
-        :access_key_id  => options[:access_key_id]
+        :access_key_id  => options[:access_key_id],
         :secret_access_key => options[:secret_access_key]
       )
       @bucket         = options[:bucket]
