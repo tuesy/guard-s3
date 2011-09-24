@@ -14,7 +14,7 @@ This is a sample Guardfile
       :debug              => true
     }
     
-    guard 'sync3r', opts do
+    guard 's3', opts do
       watch(/.*/)
     end
     
