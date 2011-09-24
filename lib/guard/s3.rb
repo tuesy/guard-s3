@@ -11,7 +11,6 @@ require 'guard/guard'
 module ::Guard
   class S3 < Guard
     include AWS::S3
-    
     attr_reader :s3_connection, :pwd
 
     def initialize(watchers = [], options = {})
@@ -29,7 +28,6 @@ module ::Guard
     end
     
     def start
-      
     end
     
     def stop
@@ -47,9 +45,7 @@ module ::Guard
        
     def run_on_change(paths)
       paths.each do |path|
-        log path.inspect
-        file  = File.join(pwd, path)
-        
+        file  = File.join(pwd, path)        
         begin
           if exists?(file)
             log "Nothing uploaded. #{file} already exists!"
@@ -58,20 +54,14 @@ module ::Guard
             S3Object.store(path, open(file), @bucket) 
             #S3Object.store(file, open(file), @bucket, {:content_type => file.content_type.to_s.strip, :access => @s3_permissions}) 
           end
-          
         rescue Exception => e
           log e.message
         end
-
       end
     end
     
     def exists?(filename)
-      if filename
-        AWS::S3::S3Object.exists?(filename, @bucket)
-      else
-        false
-      end
+      filename.nil? ? false : AWS::S3::S3Object.exists?(filename, @bucket)
     end
 
     private

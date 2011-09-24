@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version     = 1.0 
   s.authors     = ["James Welsh"]
   s.email       = ["james at supermatter dot com"]
-  s.homepage    = "http://github.com/jwelshiv/guard-s3"
+  s.homepage    = "http://github.com/guard/guard-s3"
   s.summary     = %q{A simple guard library for syncing files with s3}
   s.description = %q{A simple guard library for syncing files with s3}
 
