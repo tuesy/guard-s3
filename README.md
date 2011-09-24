@@ -10,8 +10,7 @@ This is a sample Guardfile
       :access_key_id      => 'ACCESS_KEY_ID_XXXXXX',
       :secret_access_key  => 'SECRET_ACCESS_KEY_XXXXXXXXXXXXXXXXXXXXXX',
       :bucket             => "mybucket",
-      :s3_permissions     => :public_read,          
-      :debug              => true
+      :s3_permissions     => :public_read
     }
     
     guard 's3', opts do
