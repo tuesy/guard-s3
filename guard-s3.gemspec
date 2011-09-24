@@ -1,16 +1,19 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
+require 'guard/s3/version'
 
 Gem::Specification.new do |s|
   s.name        = "guard-s3"
-  s.version     = 1.0 
+  s.version     = Guard::S3::VERSION
+  s.platform    = Gem::Platform::RUBY
   s.authors     = ["James Welsh"]
   s.email       = ["james at supermatter dot com"]
   s.homepage    = "http://github.com/guard/guard-s3"
   s.summary     = %q{A simple guard library for syncing files with s3}
   s.description = %q{A simple guard library for syncing files with s3}
 
-  #s.rubyforge_project = "guard-s3"
+  s.required_rubygems_version = '>= 1.3.6'
+  s.rubyforge_project         = "guard-s3"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
