@@ -24,23 +24,7 @@ module ::Guard
       @debug          = true
       @pwd            = Dir.pwd
     end
-    
-    def start
-    end
-    
-    def stop
-      true
-    end
-    
-    def reload
-      stop
-      start
-    end
-    
-    def run_all
-      true
-    end
-       
+        
     def run_on_change(paths)
       paths.each do |path|
         file  = File.join(pwd, path)        
