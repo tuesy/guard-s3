@@ -22,7 +22,7 @@ module ::Guard
       @bucket         = options[:bucket]
       @s3_permissions = options[:s3_permissions]
       @debug          = true
-      @pwd            = watchdir || Dir.pwd
+      @pwd            = Dir.pwd
     end
         
     def run_on_change(paths)
@@ -56,9 +56,5 @@ module ::Guard
       puts "[#{Time.now}] #{msg}"
     end
 
-    def watchdir
-      # TODO: Nicer way to detect Guard watching a directory explicitly?
-      ::Guard::Dsl.class_variable_get(:@@options).watchdir
-    end
   end
 end
