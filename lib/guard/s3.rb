@@ -22,12 +22,12 @@ module ::Guard
       @bucket         = options[:bucket]
       @s3_permissions = options[:s3_permissions]
       @debug          = true
-      @pwd            = Dir.pwd
+      @watchdir       = (Dsl.options[:watchdir] && File.expand_path(Dsl.options[:watchdir])) || Dir.pwd
     end
         
     def run_on_change(paths)
       paths.each do |path|
-        file  = File.join(pwd, path)        
+        file  = File.join(@watchdir, path)        
         begin
           if exists?(file)
             log "Nothing uploaded. #{file} already exists!"
