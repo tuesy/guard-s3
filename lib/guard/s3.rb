@@ -8,7 +8,7 @@ end unless defined?(AWS::S3)
 require 'guard'
 require 'guard/guard'
 
-module ::Guard
+module Guard
   class S3 < Plugin
     include AWS::S3
     attr_reader :s3_connection, :pwd
