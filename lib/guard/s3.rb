@@ -6,7 +6,7 @@ rescue LoadError => e
 end unless defined?(AWS::S3)
 
 require 'guard'
-require 'guard/guard'
+require 'guard/plugin'
 
 module Guard
   class S3 < Plugin
