@@ -9,7 +9,7 @@ require 'guard'
 require 'guard/guard'
 
 module ::Guard
-  class S3 < Guard
+  class S3 < Plugin
     include AWS::S3
     attr_reader :s3_connection, :pwd
 
@@ -24,23 +24,23 @@ module ::Guard
       @debug          = true
       @watchdir       = (Dsl.options[:watchdir] && File.expand_path(Dsl.options[:watchdir])) || Dir.pwd
     end
-        
+
     def run_on_change(paths)
       paths.each do |path|
-        file  = File.join(@watchdir, path)        
+        file  = File.join(@watchdir, path)
         begin
           if exists?(file)
             log "Nothing uploaded. #{file} already exists!"
           else
             log "Uploading #{path}"
-            S3Object.store(path, open(file), @bucket, {:access => @s3_permissions}) 
+            S3Object.store(path, open(file), @bucket, {:access => @s3_permissions})
           end
         rescue Exception => e
           log e.message
         end
       end
     end
-    
+
     def exists?(filename)
       filename.nil? ? false : AWS::S3::S3Object.exists?(filename, @bucket)
     end
